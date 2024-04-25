@@ -52,7 +52,7 @@ function mezclarArray(array) {
 
 function obtenerProductos(numProductos, orden, idCategoria, telefonoNombre) {
     console.log(numProductos, orden, idCategoria, telefonoNombre)
-    fetch('http://localhost:3000/api/productos')
+    fetch('https://7c0d5e28-f32d-4be0-90ba-e26b7a6f5763-00-10h87gqcgyorr.kirk.replit.dev/api/productos')
         .then(response => response.json())
         .then(data => {
             // Si telefonoNombre está definido, filtra los productos por el nombre del teléfono
@@ -107,7 +107,7 @@ function obtenerProductos(numProductos, orden, idCategoria, telefonoNombre) {
                 <div style=" width: 380px;" class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
                     <div class="item-back"></div>
                     <a  class="item-image responsive-1by1">
-                    <img src="http://localhost:3000${producto.imagen}" alt="">
+                    <img src="..${producto.imagen}" alt="">
                     </a>
                     <div class="item-content shift-md">
                         <div class="item-textes">
@@ -136,7 +136,8 @@ function obtenerProductos(numProductos, orden, idCategoria, telefonoNombre) {
 
 
 function obtenerProductosAleatorios() {
-    fetch('http://localhost:3000/api/productos')
+    fetch('https://7c0d5e28-f32d-4be0-90ba-e26b7a6f5763-00-10h87gqcgyorr.kirk.replit.dev/api/productos')
+
         .then(response => response.json())
         .then(data => {
             // Mezcla los productos
@@ -186,7 +187,7 @@ function obtenerProductosAleatorios() {
 }
 
 function obtenerCategorias() {
-    fetch('http://localhost:3000/api/categorias')
+    fetch('https://7c0d5e28-f32d-4be0-90ba-e26b7a6f5763-00-10h87gqcgyorr.kirk.replit.dev/api/categorias')
         .then(response => response.json())
         .then(data => {
             // Obtiene el div de categorías
@@ -219,60 +220,6 @@ function obtenerCategorias() {
         .catch(error => console.error('Error:', error));
 }
 
-
-function obtenerTelefonos() {
-    fetch('http://localhost:3000/api/telefonos')
-        .then(response => response.json())
-        .then(data => {
-            // Obtiene el div de categorías
-            var divTelefonos = document.getElementById('telefonos');
-            console.log(data);
-
-            // Por cada categoría en los datos
-            data.forEach(telefono => {
-                // Crea un nuevo div para la categoría
-                var divTelefonos = document.createElement('div');
-               
-                // Aquí generas el HTML para cada categoría
-                divTelefonos.innerHTML = `
-                <div style=" width: 380px;" class="item shop-item shop-item-simple" data-inview-showup="showup-scale">
-                <div class="item-back"></div>
-                <a  class="item-image responsive-1by1">
-                <img src="http://localhost:3000${telefono.imagen}" alt="">
-                </a>
-                <div class="item-content shift-md">
-                    <div class="item-textes">
-                        <div class="item-title text-upper">
-                            <a  class="content-link">${telefono.Nombre}</a>
-                        </div>
-                        <div class="item-categories">
-                            <a  class="content-link"> ${producto.Marca}</a>
-                        </div>
-                    </div>
-                    <div class="item-prices">
-                        <div class="item-price">$${precioFormateado}</div>
-                    </div>
-                </div>
-                <div class="item-links">
-                    <a  class="btn text-upper btn-md btns-bordered">Ver</a>
-                </div>
-            </div>
-                
-            `;
-
-                // Añade un evento de escucha para el evento 'click'
-                divTelefonos.addEventListener('click', function() {
-                    // Llama a la función obtenerProductos con el id de la categoría
-                    obtenerTelefonos(null, null, telefono.ID);
-                    console.log(telefono.ID)
-                });
-
-                // Añade el div de la categoría al div de categorías
-                divTelefonos.appendChild(divTelefonos);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-}
 
 
 // Obtiene el campo de entrada
