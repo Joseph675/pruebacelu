@@ -1,0 +1,22 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px; /* Espacio entre los elementos de la cuadrícula */
+
+
+}
+/* Estilo para pantallas grandes (por defecto) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 productos por fila */
+    grid-gap: 10px;
+}
+
+/* Estilo para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .grid-container {
+        display: block; /* 1 producto por fila */
+    }
+}
+
+
